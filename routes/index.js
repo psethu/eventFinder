@@ -48,10 +48,14 @@ exports.doPost = function(req, res){
   if (req.body.newname === "") {
   		req.body.newname = req.body.oldname;
   	}
+  	// same idea as above for below if conditions
 
 events.update( "myProducts", 
                   "event", 
-                  {"find":{"name":req.body.oldname}, "update":{$set: {"name":req.body.newname, "time":req.body.newtime}} },
+                  {"find":{"name":req.body.oldname}, "update":{$set: {"name":req.body.newname,
+                  											 		"time":req.body.newtime}
+                  												} 
+                  											},
                   function(model) {
 							res.render('success',{title: 'Local events', obj: model});
                     }

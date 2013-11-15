@@ -38,7 +38,7 @@ exports.update = function(database, collection, query, callback) {
   console.log("POST query is: "+JSON.stringify(query));
   console.log("POST query.find is: "+JSON.stringify(query.find));
   console.log("POST collection is: "+collection);
-  // NOTE: JSON.parse does not accept something of type object
+  // NOTE: JSON.parse only accepts type string?
   mongoClient.connect(server+database, function(err, db) {
     if (err) doError(err);
     console.log("POST query.find is: "+JSON.stringify(query.find));

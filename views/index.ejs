@@ -1,0 +1,57 @@
+<html>
+    <title>EventFinder</title>
+   	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="forms.js"> </script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+  	<div id="title">Welcome to eventFinder!</div>
+  	<div id="subTitleCaption">"where one can always find something to do" - CEO sprakasa</div>
+  	<br>
+  	<br>
+  	<table border="1">
+  		<tr>
+  			<td>
+				<form id="f1">
+				  <div class="fheader">Create a new event (PUT):</div>
+				   <input id="e1" type="text" name="e1"><br>
+					Location: <input id="e1_2" type="text" name="e1_2"><br> <!-- Location (street address, ie 45 Smith Avenue) -->
+					Time: <input id="e1_3" type="text" name="e1_3"><br> <!-- Time, ex: 2:45pm-->
+					Date: <input id="e1_4" type="text" name="e1_4"><br> <!-- Date, ex: 12/2/13-->
+				  <input type="submit" value="Submit">
+				</form>
+				<div id="div1"> </div>
+  			</td>
+  			<td>
+				<form id="f2">
+				  <div class="fheader">Modify an event (POST): </div>
+				  <input id="oldname" type="text" name="oldname"><br>
+				  To Name: <input id="newname" type="text" name="newname"><br>
+				  New time: <input id="newtime" type="text" name="newtime"><br>
+				  <input type="submit" value="Submit">
+				</form>
+				<div id="div2"> </div>
+  			</td>
+  		</tr>
+  	</table>
+  	<br>
+
+		<form id="f3">
+		  <div class="fheader">Remove an event (DELETE):
+		  </div>
+		  <input id="e3" type="text" name="e3"><br>
+		  <input type="submit" value="Submit">
+		</form>
+		<div id="div3"> </div>
+
+
+		<form id="f4">
+			<div class="fheader">Find event(s) (GET): </div>
+			<input id="e4" type="text" name="e4"><br>
+			<input type="submit" value="Submit">
+		</form>
+		<div id="div4"> </div>
+
+
+</body>
+</html>

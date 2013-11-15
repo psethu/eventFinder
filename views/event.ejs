@@ -1,0 +1,12 @@
+<html>
+	<body>
+		<b>here is your result</b>
+		<% if (obj.length) { %>
+			[</br>
+				<% obj.forEach(function(next) { %>
+				<%= JSON.stringify(next) %></br>
+			<% }); %>
+			]
+		<% } %>
+	</body>
+</html>

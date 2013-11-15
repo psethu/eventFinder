@@ -1,4 +1,6 @@
 var events = require("../models/mymongo.js");
+var mydb = "myProducts";
+var mycollection = "event";
 
 exports.index = function(req, res) {
   res.render('index', {title: 'MongoDB Test'})
@@ -11,8 +13,8 @@ exports.doPut = function(req, res){
   //events.push(req.body.inputString);
   // input is an array where each element is an attribute of an Event
   var input = req.body.input_1
-	events.insert( "myProducts", 
-	              "event", 
+	events.insert( mydb, 
+	              mycollection, 
 	              {"name": input[0], 
 	              	"location":input[1], 
 	              	"time":input[2],
@@ -28,8 +30,8 @@ exports.doPut = function(req, res){
 exports.doGet = function(req, res){
 	// for get need to do req.query
 	console.log("exports.doGet, req query is: " + req.query.name_1);
-events.find( "myProducts", 
-              "event", 
+events.find( mydb, 
+              mycollection, 
               {"name" : req.query.name_1},
               function(model) {
               	// below directs to event.ejs since doing res.render ('event', ...)
@@ -48,13 +50,25 @@ exports.doPost = function(req, res){
   if (req.body.newname === "") {
   		req.body.newname = req.body.oldname;
   	}
-  	// same idea as above for below if conditions
 
-events.update( "myProducts", 
-                  "event", 
+  	// if conditions below for the same reason I have the above if condition
+  	// somehow need to get old(insert time/location/date), but for now have some string
+  if (req.body.newlocation === "") {
+  		req.body.newlocation = "left blank during post";
+  	}
+  if (req.body.newtime === "") {
+  		req.body.newtime = "left blank during post";
+  	}
+  if (req.body.newdate === "") {
+  		req.body.newdate = "left blank during post";
+  	}
+events.update( mydb, 
+                  mycollection, 
                   {"find":{"name":req.body.oldname}, "update":{$set: {"name":req.body.newname,
-                  											 		"time":req.body.newtime}
-                  												} 
+                  											 		"location":req.body.newlocation,
+                  											 		"time":req.body.newtime,
+                  											 		"date":req.body.newdate
+                  											 		}}
                   											},
                   function(model) {
 							res.render('success',{title: 'Local events', obj: model});
@@ -64,8 +78,8 @@ events.update( "myProducts",
 
 exports.doDelete = function(req, res){
 	console.log("EXPORTS.doDELETE req.body:"+JSON.stringify(req.body));
-	events.destroy("myProducts", 
-					"event",
+	events.destroy(mydb, 
+					mycollection,
 					 {"find":{"name":req.body.name_1}},
 	                  function(model) {
 								res.render('success',{title: 'Local events', obj: model});

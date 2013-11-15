@@ -16,7 +16,10 @@ function doPost() {
 			data: {
 				oldname: $("#oldname").val(),
 				newname: $("#newname").val(),
-				newtime: $("#newtime").val()
+				newlocation: $("#newlocation").val(),
+				newtime: $("#newtime").val(),
+				newdate: $("#newdate").val()
+
 			},
 			success: function(data) {
 				$('#div2').html(data);
